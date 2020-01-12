@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">BrainResearch</string>
+    <string name="action_settings">Settings</string>
+    <string name="intro_description">Are you ready?\n
+        \n
+        \u2022 5-20 minutes you won’t be interrupted\n
+        \u2022 A place you can sit comfortably\n
+        \u2022 Pulse oximeter\n
+        \t \u2022 On your left middle or ring finger\n
+        \u2022 BP monitor\n
+        \t \u2022 With the cuff over the left arm\n
+        \u2022 Valsalva box and tube\n
+        \t \u2022 Power connected (red light on)
+</string>
+</resources>
