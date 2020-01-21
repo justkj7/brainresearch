@@ -25,17 +25,27 @@ public class RestActivity extends AppCompatActivity {
         switch (mPrevActivity) {
             case Question: {
                 textView.setText(R.string.rest_sit);
-                pd.setMessage("Rest");
+                pd.setMessage(getResources().getString(R.string.rest_rest));
             }
                 break;
             case IntroValsalva: {
                 textView.setText(R.string.rest_valsalva_wait1);
-                pd.setMessage("Wait....");
+                pd.setMessage(getResources().getString(R.string.rest_wait));
             }
                 break;
-            case ValsalvaBlow: {
+            case BlowValsalva: {
                 textView.setText(R.string.rest_valsalva_wait2);
-                pd.setMessage("Wait....");
+                pd.setMessage(getResources().getString(R.string.rest_wait));
+            }
+                break;
+            case IntroBreathHold: {
+                textView.setText(R.string.rest_breath_hold_wait1);
+                pd.setMessage(getResources().getString(R.string.rest_wait));
+            }
+                break;
+            case BlowBreathHold: {
+                textView.setText(R.string.rest_breath_hold_wait2);
+                pd.setMessage(getResources().getString(R.string.rest_wait));
             }
                 break;
             default:
@@ -67,16 +77,26 @@ public class RestActivity extends AppCompatActivity {
             }
                 break;
             case IntroValsalva: {
-                Intent intent = new Intent(RestActivity.this, ValsalvaBlowActivity.class);
+                Intent intent = new Intent(RestActivity.this, BlowValsalvaActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
                 break;
-            case ValsalvaBlow: {
+            case BlowValsalva: {
                 Intent intent = new Intent(RestActivity.this, BloodPressureActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra(Config.PREV_ACTIVITY, Config.ActivityType.Valsalva_Rest);
                 startActivity(intent);
+            }
+                break;
+            case IntroBreathHold: {
+                Intent intent = new Intent(RestActivity.this, BlowBreathHoldActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+                break;
+            case BlowBreathHold: {
+
             }
                 break;
             default:

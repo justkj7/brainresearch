@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ValsalvaBlowActivity">
+    tools:context=".BlowBreathHoldActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,5 +13,5 @@
         android:layout_marginStart="30dp"
         android:lines="10"
         android:textSize="16sp"
-        android:text="@string/valsalva_blow" />
+        android:text="@string/breath_hold_blow" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

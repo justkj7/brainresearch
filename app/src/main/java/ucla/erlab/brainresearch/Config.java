@@ -7,7 +7,9 @@ public class Config {
         PulseOxConn,
         Question,
         IntroValsalva,
-        ValsalvaBlow,
+        IntroBreathHold,
+        BlowValsalva,
+        BlowBreathHold,
         Default_Rest,
         Valsalva_Rest
     }

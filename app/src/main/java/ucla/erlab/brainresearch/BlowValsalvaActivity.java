@@ -5,19 +5,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
-public class ValsalvaBlowActivity extends AppCompatActivity {
+public class BlowValsalvaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_valsalva_blow);
+        setContentView(R.layout.activity_blow_valsalva);
 
         ProgressDialog pd = new ProgressDialog(this, R.style.NewDialog);
         pd.setMessage("Blow");
@@ -38,9 +34,9 @@ public class ValsalvaBlowActivity extends AppCompatActivity {
     }
 
     public void goToRest(View view) {
-        Intent intent = new Intent(ValsalvaBlowActivity.this, RestActivity.class);
+        Intent intent = new Intent(BlowValsalvaActivity.this, RestActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        intent.putExtra(Config.PREV_ACTIVITY, Config.ActivityType.ValsalvaBlow);
+        intent.putExtra(Config.PREV_ACTIVITY, Config.ActivityType.BlowValsalva);
         startActivity(intent);
     }
 }

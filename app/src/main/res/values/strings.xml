@@ -23,6 +23,16 @@
         \u2022 When screen changes back, breathe normally and take tube out of mouth\n
         \u2022 Wait till end of second rest period\n
     </string>
+    <string name="intro_breath_hold">
+        Ready for Breath-hold\n
+        \n
+        \u2022 Once you press Start, there will be a rest period\n
+        \u2022 Wait for screen to change\n
+        \u2022 Breathe all the way out, breath in fully, and hold\n
+        \u2022 When screen changes back, breathe normally\n
+        \u2022 Wait till end of second rest period\n
+
+    </string>
     <string name="pulseox_connection">
     Checking pulseox connection…\n
     \n
@@ -54,11 +64,33 @@
         \n
         \u2022 breathe normally and take tube out of mouth\n
     </string>
-
+    <string name="rest_breath_hold_wait1">
+        Rest\n
+        \n
+        \u2022 Wait for screen to change\n
+    </string>
+    <string name="rest_breath_hold_wait2">
+        Rest\n
+        \n
+        \u2022 breathe normally\n
+        \u2022 Wait till end of second rest period\n
+    </string>
     <string name="valsalva_blow">
         \n
         \n
         \u2022 Take a deep breath, blow into the tube so light is green\n
+    </string>
+    <string name="breath_hold_blow">
+        \n
+        \n
+        \u2022 Breathe all the way out, breath in fully, and hold\n
+    </string>
+
+    <string name="rest_rest">
+        Rest
+    </string>
+    <string name="rest_wait">
+        Wait....
     </string>
 
     <string name="title_activity_pulse_ox_conn">PulseOxConnActivity</string>
@@ -67,4 +99,6 @@
     <string name="title_activity_rest">RestActivity</string>
     <string name="title_activity_intro_valsalva">IntroValsalvaActivity</string>
     <string name="title_activity_valsalva_blow">ValsalvaBlowActivity</string>
+    <string name="title_activity_intro_breath_hold">IntroBreathHoldActivity</string>
+    <string name="title_activity_breath_hold_blow">BreathHoldBlowActivity</string>
 </resources>
