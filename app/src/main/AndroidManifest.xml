@@ -10,15 +10,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".RestActivity"
+            android:label="@string/title_activity_rest"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".QuestionActivity"
+            android:label="@string/title_activity_question"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".BloodPressureActivity"
             android:label="@string/title_activity_blood_pressure"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PulseOxConnActivity"
             android:label="@string/title_activity_pulse_ox_conn"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".IntroActivity"
+            android:name=".IntroDefaultActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"

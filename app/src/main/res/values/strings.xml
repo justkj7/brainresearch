@@ -28,6 +28,16 @@
         \u2022 Enter three values\n
     </string>
 
+    <string name="questions">
+        [multiple questions]
+    </string>
+
+    <string name="rest_sit">
+        Sit quietly
+    </string>
+
     <string name="title_activity_pulse_ox_conn">PulseOxConnActivity</string>
     <string name="title_activity_blood_pressure">BloodPressureActivity</string>
+    <string name="title_activity_question">QuestionActivity</string>
+    <string name="title_activity_rest">RestActivity</string>
 </resources>

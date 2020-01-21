@@ -3,9 +3,6 @@ package ucla.erlab.brainresearch;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -51,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBtnStart(View view) {
-        Intent intent = new Intent(MainActivity.this, IntroActivity.class);
+        Intent intent = new Intent(MainActivity.this, IntroDefaultActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }

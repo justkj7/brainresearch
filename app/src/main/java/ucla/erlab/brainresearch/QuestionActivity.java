@@ -11,13 +11,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
-public class IntroActivity extends AppCompatActivity {
+public class QuestionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_intro);
-
+        setContentView(R.layout.activity_question);
     }
 
     @Override
@@ -27,13 +26,13 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     public void onBtnCancel(View view) {
-        // Cancel button event
         finish();
     }
 
-    public void onBtnReady(View view) {
-        Intent intent = new Intent(IntroActivity.this, PulseOxConnActivity.class);
+    public void onBtnNext(View view) {
+        Intent intent = new Intent(QuestionActivity.this, RestActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent.putExtra(Config.PREV_ACTIVITY, Config.ActivityType.Question);
         startActivity(intent);
     }
 }
