@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">BrainResearch</string>
     <string name="action_settings">Settings</string>
-    <string name="intro_description">Are you ready?\n
+    <string name="intro_description">
+        Are you ready?\n
         \n
         \u2022 5-20 minutes you won’t be interrupted\n
         \u2022 A place you can sit comfortably\n
@@ -10,6 +11,23 @@
         \u2022 BP monitor\n
         \t \u2022 With the cuff over the left arm\n
         \u2022 Valsalva box and tube\n
-        \t \u2022 Power connected (red light on)
-</string>
+        \t \u2022 Power connected (red light on)\n
+    </string>
+
+    <string name="pulseox_connection">
+    Checking pulseox connection…\n
+    \n
+    \u2022 Place pulseox on finger\n
+    \u2022 Light should turn green after a few seconds\n
+    </string>
+
+    <string name="blood_pressure">
+        Blood Pressure\n
+        \n
+        \u2022 Take blood pressure\n
+        \u2022 Enter three values\n
+    </string>
+
+    <string name="title_activity_pulse_ox_conn">PulseOxConnActivity</string>
+    <string name="title_activity_blood_pressure">BloodPressureActivity</string>
 </resources>

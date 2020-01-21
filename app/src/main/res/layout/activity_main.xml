@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:text="Start a study"
         android:padding="20dp"
-        android:onClick="goToIntro"
+        android:onClick="onBtnStart"
         app:layout_anchor="@+id/constraintLayout"
         app:layout_anchorGravity="center" />
 

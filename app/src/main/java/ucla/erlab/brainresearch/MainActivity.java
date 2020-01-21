@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void goToIntro(View view) {
+    public void onBtnStart(View view) {
         Intent intent = new Intent(MainActivity.this, IntroActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
