@@ -10,9 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ValsalvaBlowActivity"
+            android:label="@string/title_activity_valsalva_blow"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".IntroValsalvaActivity"
+            android:label="@string/title_activity_intro_valsalva"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".RestActivity"
             android:label="@string/title_activity_rest"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".QuestionActivity"
             android:label="@string/title_activity_question"

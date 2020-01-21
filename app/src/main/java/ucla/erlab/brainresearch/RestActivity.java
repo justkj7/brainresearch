@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.widget.TextView;
 
 public class RestActivity extends AppCompatActivity {
 
@@ -20,13 +21,32 @@ public class RestActivity extends AppCompatActivity {
         mPrevActivity = (Config.ActivityType) getIntent().getSerializableExtra(Config.PREV_ACTIVITY);
 
         ProgressDialog pd = new ProgressDialog(this, R.style.NewDialog);
-        pd.setMessage("Rest");
-        pd.show();
+        TextView textView = (TextView)findViewById(R.id.rest_guide);
+        switch (mPrevActivity) {
+            case Question: {
+                textView.setText(R.string.rest_sit);
+                pd.setMessage("Rest");
+            }
+                break;
+            case IntroValsalva: {
+                textView.setText(R.string.rest_valsalva_wait1);
+                pd.setMessage("Wait....");
+            }
+                break;
+            case ValsalvaBlow: {
+                textView.setText(R.string.rest_valsalva_wait2);
+                pd.setMessage("Wait....");
+            }
+                break;
+            default:
+                break;
+        }
 
+        pd.show();
         pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {
-                goToBloodPressure(null);
+                goToNextActivity(null);
             }
         });
     }
@@ -37,7 +57,7 @@ public class RestActivity extends AppCompatActivity {
         overridePendingTransition(0, 0);
     }
 
-    public void goToBloodPressure(View view) {
+    public void goToNextActivity(View view) {
         switch (mPrevActivity) {
             case Question: {
                 Intent intent = new Intent(RestActivity.this, BloodPressureActivity.class);
@@ -45,7 +65,20 @@ public class RestActivity extends AppCompatActivity {
                 intent.putExtra(Config.PREV_ACTIVITY, Config.ActivityType.Default_Rest);
                 startActivity(intent);
             }
-            break;
+                break;
+            case IntroValsalva: {
+                Intent intent = new Intent(RestActivity.this, ValsalvaBlowActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+                break;
+            case ValsalvaBlow: {
+                Intent intent = new Intent(RestActivity.this, BloodPressureActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.putExtra(Config.PREV_ACTIVITY, Config.ActivityType.Valsalva_Rest);
+                startActivity(intent);
+            }
+                break;
             default:
                 break;
         }

@@ -36,6 +36,15 @@ public class BloodPressureActivity extends AppCompatActivity {
                 startActivity(intent);
             }
                 break;
+            case Default_Rest: {
+                Intent intent = new Intent(BloodPressureActivity.this, IntroValsalvaActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+                break;
+            case Valsalva_Rest: {
+
+            }
             default:
                 break;
         }

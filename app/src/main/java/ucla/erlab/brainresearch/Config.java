@@ -5,7 +5,10 @@ public class Config {
 
     public enum ActivityType {
         PulseOxConn,
+        Question,
+        IntroValsalva,
+        ValsalvaBlow,
         Default_Rest,
-        Question
+        Valsalva_Rest
     }
 }
