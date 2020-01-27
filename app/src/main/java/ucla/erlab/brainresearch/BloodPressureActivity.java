@@ -9,13 +9,13 @@ import android.view.View;
 
 public class BloodPressureActivity extends AppCompatActivity {
 
-    private Config.ActivityType mPrevActivity;
+    private Config.BPType mBPScreenType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_pressure);
-        mPrevActivity = (Config.ActivityType) getIntent().getSerializableExtra(Config.PREV_ACTIVITY);
+        mBPScreenType = (Config.BPType) getIntent().getSerializableExtra(Config.PREV_ACTIVITY);
     }
 
     @Override
@@ -29,20 +29,20 @@ public class BloodPressureActivity extends AppCompatActivity {
     }
 
     public void onBtnNext(View view) {
-        switch (mPrevActivity) {
-            case PulseOxConn: {
+        switch (mBPScreenType) {
+            case Setup: {
                 Intent intent = new Intent(BloodPressureActivity.this, QuestionActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
                 break;
-            case Default_Rest: {
+            case Rest: {
                 Intent intent = new Intent(BloodPressureActivity.this, IntroValsalvaActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
                 break;
-            case Valsalva_Rest: {
+            case Valsalva: {
                 Intent intent = new Intent(BloodPressureActivity.this, IntroBreathHoldActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);

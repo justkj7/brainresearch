@@ -12,38 +12,38 @@ import android.widget.TextView;
 
 public class RestActivity extends AppCompatActivity {
 
-    private Config.ActivityType mPrevActivity;
+    private Config.RestType mRestScreenType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rest);
-        mPrevActivity = (Config.ActivityType) getIntent().getSerializableExtra(Config.PREV_ACTIVITY);
+        mRestScreenType = (Config.RestType) getIntent().getSerializableExtra(Config.PREV_ACTIVITY);
 
         ProgressDialog pd = new ProgressDialog(this, R.style.NewDialog);
         TextView textView = (TextView)findViewById(R.id.rest_guide);
-        switch (mPrevActivity) {
-            case Question: {
+        switch (mRestScreenType) {
+            case Setup: {
                 textView.setText(R.string.rest_sit);
                 pd.setMessage(getResources().getString(R.string.rest_rest));
             }
                 break;
-            case IntroValsalva: {
+            case ValsalvaWait: {
                 textView.setText(R.string.rest_valsalva_wait1);
                 pd.setMessage(getResources().getString(R.string.rest_wait));
             }
                 break;
-            case BlowValsalva: {
+            case ValsalvaBreath: {
                 textView.setText(R.string.rest_valsalva_wait2);
                 pd.setMessage(getResources().getString(R.string.rest_wait));
             }
                 break;
-            case IntroBreathHold: {
+            case BreathHoldWait: {
                 textView.setText(R.string.rest_breath_hold_wait1);
                 pd.setMessage(getResources().getString(R.string.rest_wait));
             }
                 break;
-            case BlowBreathHold: {
+            case BreathHoldBreath: {
                 textView.setText(R.string.rest_breath_hold_wait2);
                 pd.setMessage(getResources().getString(R.string.rest_wait));
             }
@@ -68,34 +68,34 @@ public class RestActivity extends AppCompatActivity {
     }
 
     public void goToNextActivity(View view) {
-        switch (mPrevActivity) {
-            case Question: {
+        switch (mRestScreenType) {
+            case Setup: {
                 Intent intent = new Intent(RestActivity.this, BloodPressureActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                intent.putExtra(Config.PREV_ACTIVITY, Config.ActivityType.Default_Rest);
+                intent.putExtra(Config.PREV_ACTIVITY, Config.BPType.Rest);
                 startActivity(intent);
             }
                 break;
-            case IntroValsalva: {
+            case ValsalvaWait: {
                 Intent intent = new Intent(RestActivity.this, BlowValsalvaActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
                 break;
-            case BlowValsalva: {
+            case ValsalvaBreath: {
                 Intent intent = new Intent(RestActivity.this, BloodPressureActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                intent.putExtra(Config.PREV_ACTIVITY, Config.ActivityType.Valsalva_Rest);
+                intent.putExtra(Config.PREV_ACTIVITY, Config.BPType.Valsalva);
                 startActivity(intent);
             }
                 break;
-            case IntroBreathHold: {
+            case BreathHoldWait: {
                 Intent intent = new Intent(RestActivity.this, BlowBreathHoldActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
                 break;
-            case BlowBreathHold: {
+            case BreathHoldBreath: {
 
             }
                 break;

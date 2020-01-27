@@ -36,7 +36,7 @@ public class BlowValsalvaActivity extends AppCompatActivity {
     public void goToRest(View view) {
         Intent intent = new Intent(BlowValsalvaActivity.this, RestActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        intent.putExtra(Config.PREV_ACTIVITY, Config.ActivityType.BlowValsalva);
+        intent.putExtra(Config.PREV_ACTIVITY, Config.RestType.ValsalvaBreath);
         startActivity(intent);
     }
 }

@@ -36,7 +36,7 @@ public class BlowBreathHoldActivity extends AppCompatActivity {
     public void goToRest(View view) {
         Intent intent = new Intent(BlowBreathHoldActivity.this, RestActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        intent.putExtra(Config.PREV_ACTIVITY, Config.ActivityType.BlowBreathHold);
+        intent.putExtra(Config.PREV_ACTIVITY, Config.RestType.BreathHoldBreath);
         startActivity(intent);
     }
 }
