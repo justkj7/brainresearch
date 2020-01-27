@@ -96,7 +96,9 @@ public class RestActivity extends AppCompatActivity {
             }
                 break;
             case BreathHoldBreath: {
-
+                Intent intent = new Intent(RestActivity.this, IntroPVTActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
             }
                 break;
             default:

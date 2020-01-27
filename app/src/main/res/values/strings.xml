@@ -31,7 +31,11 @@
         \u2022 Breathe all the way out, breath in fully, and hold\n
         \u2022 When screen changes back, breathe normally\n
         \u2022 Wait till end of second rest period\n
-
+    </string>
+    <string name="intro_pvt">
+        Ready for reaction test\n
+        \n
+        \u2022 When you see a red dot, tap the screen\n
     </string>
     <string name="pulseox_connection">
     Checking pulseox connection…\n
@@ -101,4 +105,6 @@
     <string name="title_activity_valsalva_blow">ValsalvaBlowActivity</string>
     <string name="title_activity_intro_breath_hold">IntroBreathHoldActivity</string>
     <string name="title_activity_breath_hold_blow">BreathHoldBlowActivity</string>
+    <string name="title_activity_intro_pvt">IntroPVTActivity</string>
+    <string name="title_activity_red_dot">RedDotActivity</string>
 </resources>

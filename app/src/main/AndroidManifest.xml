@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingsActivity"></activity>
+        <activity
+            android:name=".RedDotActivity"
+            android:label="@string/title_activity_red_dot"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".IntroPVTActivity"
+            android:label="@string/title_activity_intro_pvt"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SettingsActivity" />
         <activity
             android:name=".BlowBreathHoldActivity"
             android:label="@string/title_activity_breath_hold_blow"
