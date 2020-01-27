@@ -14,7 +14,6 @@ public class Config {
     public enum BPType {
         Setup,
         Rest,
-        Valsalva,
-
+        Valsalva
     }
 }

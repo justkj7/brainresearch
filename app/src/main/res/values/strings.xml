@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BrainResearch</string>
     <string name="action_settings">Settings</string>
-    <string name="intro_default">
+    <string name="intro_setup">
         Are you ready?\n
         \n
         \u2022 5-20 minutes you won’t be interrupted\n

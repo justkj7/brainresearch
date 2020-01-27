@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:screenOrientation="portrait"
-    tools:context=".IntroDefaultActivity">
+    tools:context=".IntroSetupActivity">
 
     <TextView
         android:id="@+id/textView2"
@@ -15,7 +15,7 @@
         android:layout_marginStart="30dp"
         android:lines="10"
         android:textSize="16sp"
-        android:text="@string/intro_default" />
+        android:text="@string/intro_setup" />
 
     <LinearLayout
         android:orientation="horizontal"

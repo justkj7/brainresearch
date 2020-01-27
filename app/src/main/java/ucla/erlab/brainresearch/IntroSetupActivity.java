@@ -7,13 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
-public class IntroDefaultActivity extends AppCompatActivity {
+public class IntroSetupActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_intro_default);
-
+        setContentView(R.layout.activity_intro_setup);
     }
 
     @Override
@@ -28,7 +27,7 @@ public class IntroDefaultActivity extends AppCompatActivity {
     }
 
     public void onBtnReady(View view) {
-        Intent intent = new Intent(IntroDefaultActivity.this, PulseOxConnActivity.class);
+        Intent intent = new Intent(IntroSetupActivity.this, PulseOxConnActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }

@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBtnStart(View view) {
-        Intent intent = new Intent(MainActivity.this, IntroDefaultActivity.class);
+        Intent intent = new Intent(MainActivity.this, IntroSetupActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }

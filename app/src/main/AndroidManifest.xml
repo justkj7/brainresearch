@@ -43,7 +43,7 @@
             android:label="@string/title_activity_pulse_ox_conn"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".IntroDefaultActivity"
+            android:name=".IntroSetupActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
