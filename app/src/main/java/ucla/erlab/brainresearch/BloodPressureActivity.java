@@ -15,7 +15,7 @@ public class BloodPressureActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_pressure);
-        mBPScreenType = (Config.BPType) getIntent().getSerializableExtra(Config.PREV_ACTIVITY);
+        mBPScreenType = (Config.BPType) getIntent().getSerializableExtra(Config.BP_TYPE);
     }
 
     @Override

@@ -32,7 +32,7 @@ public class IntroBreathHoldActivity extends AppCompatActivity {
     public void onBtnStart(View view) {
         Intent intent = new Intent(IntroBreathHoldActivity.this, RestActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        intent.putExtra(Config.PREV_ACTIVITY, Config.RestType.BreathHoldWait);
+        intent.putExtra(Config.REST_TYPE, Config.RestType.BreathHoldWait);
         startActivity(intent);
     }
 }

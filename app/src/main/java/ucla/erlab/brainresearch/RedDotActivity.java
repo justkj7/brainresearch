@@ -1,53 +1,119 @@
 package ucla.erlab.brainresearch;
 
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.Random;
 
 public class RedDotActivity extends AppCompatActivity {
+    AsyncTaskRunner async = null;
+    int mLayoutWidth = 0;
+    int mLayoutHeight = 0;
+
+    private boolean mTaskInit = false;
+    private int mTaskCount = 0;
+    private Handler mHandler = new Handler();
+    private Runnable myTask = new Runnable() {
+        public void run() {
+            TextView tv = (TextView) findViewById(R.id.tv_reddot);
+            async = new AsyncTaskRunner(tv, mLayoutWidth, mLayoutHeight);
+            async.execute();
+            ++mTaskCount;
+
+            if (mTaskCount == 1) {
+                mHandler.removeCallbacks(myTask);
+            }
+            mHandler.postDelayed(this, 3000);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        PVCView pvcview = new PVCView(this);
-        setContentView(pvcview);
+        setContentView(R.layout.activity_reddot);
+
+        final LinearLayout ll = (LinearLayout) findViewById(R.id.layout_reddot);
+        ll.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                if (!mTaskInit) {
+                    mTaskInit = true;
+                    mLayoutWidth = ll.getWidth();
+                    mLayoutHeight = ll.getHeight();
+                    mHandler.postDelayed(myTask, 1000);
+                }
+            }
+        });
     }
 
-    public class PVCView extends View {
-        Paint paint = null;
-        public PVCView(Context context) {
-            super(context);
-            paint = new Paint();
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        overridePendingTransition(0, 0);
+
+    }
+
+    public void onRedDot(View view) {
+        Intent intent = new Intent(RedDotActivity.this, BloodPressureActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent.putExtra(Config.BP_TYPE, Config.BPType.PRE_STRESS_REDUCTION);
+        startActivity(intent);
+    }
+
+    private class AsyncTaskRunner extends AsyncTask<Void, Void, Void> {
+        TextView mCircle = null;
+        int mViewHeight = 0;
+        int mViewWidth = 0;
+
+        AsyncTaskRunner(TextView tv, int width, int height) {
+            mCircle = tv;
+            mViewHeight = height;
+            mViewWidth = width;
         }
 
         @Override
-        protected void onDraw(Canvas canvas) {
-            super.onDraw(canvas);
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... progress) {
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
             Random rand = new Random();
+            int x = rand.nextInt(Integer.MAX_VALUE) % mViewWidth;
+            int y = rand.nextInt(Integer.MAX_VALUE) % mViewHeight;
+            int margin = 70;
+            if (x < margin) x +=margin;
+            else if (x > mViewWidth - margin) x -=margin;
 
-            int x = rand.nextInt(Integer.MAX_VALUE) % getWidth();
-            int y = rand.nextInt(Integer.MAX_VALUE) % getHeight();
+            if (y < margin) y +=margin;
+            else if (y > mViewHeight - margin) y -=margin;
 
-            int radius = 30;
-            paint.setStyle(Paint.Style.FILL);
-            paint.setColor(Color.BLACK);
-
-            canvas.drawPaint(paint);
-            paint.setColor(Color.RED);
-
-            canvas.drawCircle(x, y, radius, paint);
+            mCircle.setX(x);
+            mCircle.setY(y);
+            mCircle.setVisibility(View.VISIBLE);
         }
     }
 }

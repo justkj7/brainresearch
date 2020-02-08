@@ -18,7 +18,7 @@ public class RestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rest);
-        mRestScreenType = (Config.RestType) getIntent().getSerializableExtra(Config.PREV_ACTIVITY);
+        mRestScreenType = (Config.RestType) getIntent().getSerializableExtra(Config.REST_TYPE);
 
         ProgressDialog pd = new ProgressDialog(this, R.style.NewDialog);
         TextView textView = (TextView)findViewById(R.id.rest_guide);
@@ -72,7 +72,7 @@ public class RestActivity extends AppCompatActivity {
             case Setup: {
                 Intent intent = new Intent(RestActivity.this, BloodPressureActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                intent.putExtra(Config.PREV_ACTIVITY, Config.BPType.Rest);
+                intent.putExtra(Config.BP_TYPE, Config.BPType.Rest);
                 startActivity(intent);
             }
                 break;
@@ -85,7 +85,7 @@ public class RestActivity extends AppCompatActivity {
             case ValsalvaBreath: {
                 Intent intent = new Intent(RestActivity.this, BloodPressureActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                intent.putExtra(Config.PREV_ACTIVITY, Config.BPType.Valsalva);
+                intent.putExtra(Config.BP_TYPE, Config.BPType.Valsalva);
                 startActivity(intent);
             }
                 break;

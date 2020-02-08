@@ -39,7 +39,7 @@ public class PulseOxConnActivity extends AppCompatActivity {
     public void goToBloodPressure(View view) {
         Intent intent = new Intent(PulseOxConnActivity.this, BloodPressureActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        intent.putExtra(Config.PREV_ACTIVITY, Config.BPType.Setup);
+        intent.putExtra(Config.BP_TYPE, Config.BPType.Setup);
         startActivity(intent);
     }
 }

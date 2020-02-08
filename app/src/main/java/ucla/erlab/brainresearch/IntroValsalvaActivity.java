@@ -32,7 +32,7 @@ public class IntroValsalvaActivity extends AppCompatActivity {
     public void onBtnStart(View view) {
         Intent intent = new Intent(IntroValsalvaActivity.this, RestActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        intent.putExtra(Config.PREV_ACTIVITY, Config.RestType.ValsalvaWait);
+        intent.putExtra(Config.REST_TYPE, Config.RestType.ValsalvaWait);
         startActivity(intent);
     }
 }

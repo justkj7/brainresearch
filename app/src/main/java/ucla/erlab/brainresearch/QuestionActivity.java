@@ -28,7 +28,7 @@ public class QuestionActivity extends AppCompatActivity {
     public void onBtnNext(View view) {
         Intent intent = new Intent(QuestionActivity.this, RestActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        intent.putExtra(Config.PREV_ACTIVITY, Config.RestType.Setup);
+        intent.putExtra(Config.REST_TYPE, Config.RestType.Setup);
         startActivity(intent);
     }
 }
