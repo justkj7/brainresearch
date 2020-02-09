@@ -1,5 +1,7 @@
 package ucla.erlab.brainresearch;
 
+import android.util.Log;
+
 public class Utils {
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
     public static String bytesToHex(byte[] bytes) {
@@ -34,11 +36,11 @@ public class Utils {
         byte[] result = null;
     }
 
-    public static ByteReadResult extractResponse(byte[] src, int offset, int targetLength) {
+    public static ByteReadResult extractResponse(byte[] src, int offset) {
         ByteReadResult result = new ByteReadResult();
 
-        byte[] target = new byte[targetLength];
-        int targetIdx = 0;
+        int targetStartIdx = 0;
+        int targetLen = 0;
 
         boolean foundSTX = false;
         boolean foundETX = false;
@@ -46,24 +48,57 @@ public class Utils {
         for ( ; i < offset && !foundETX; ++i) {
             if (!foundSTX) {
                 if (src[i] == 0x02) {
+                    targetStartIdx = i;
                     foundSTX = true;
                 }
             }
-
             if (foundSTX) {
-                target[targetIdx++] = src[i];
+                targetLen++;
                 if (src[i] == 0x03) {
                     foundETX = true;
                 }
             }
         }
 
+        //Log.e("BR", "extractResponse " + bytesToHex(src));
+        //Log.e("BR", "extractResponse " + targetStartIdx + " " + targetLen);
         if (foundSTX && foundETX) {
+            byte[] target = new byte[targetLen];
+            for (int j = targetStartIdx, k = 0; j < i; ++j, ++k) {
+                target[k] = src[j];
+            }
+
             result.success = true;
             result.byteRead = i;
             result.result = target;
         }
 
+        return result;
+    }
+
+    public static class Format13Data {
+        public int pulse = 0;
+        public int spo2 = 0;
+    }
+
+    public static Format13Data parseData13(byte[] src) {
+        final int BYTE_OFFSET = 2;
+        final int MSB_PULSE_IDX = 17;
+        final int LSB_PULSE_IDX = 18;
+        final int SPO2_IDX = 20;
+
+        int pulse = 0;
+        pulse |= src[MSB_PULSE_IDX - BYTE_OFFSET] & 0x01;
+        pulse = pulse << 8;
+        pulse |= src[LSB_PULSE_IDX - BYTE_OFFSET] & 0xFF;
+
+        int spo2 = src[SPO2_IDX - BYTE_OFFSET];
+
+        Log.w("BR", "parseData13 - pulse " + pulse + " spo2 " + spo2);
+
+        Format13Data result = new Format13Data();
+        result.pulse = pulse;
+        result.spo2 = spo2;
         return result;
     }
 }
