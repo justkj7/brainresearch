@@ -44,7 +44,7 @@ public class PulseOxConnActivity extends AppCompatActivity {
 
     private boolean mBTFetchSuccess;
 
-    private CommType mCommType = CommType.InitReq;
+    private CommType mCommType = CommType.DataIn;
 
     private enum CommType {
         InitReq,
@@ -59,22 +59,13 @@ public class PulseOxConnActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pulse_ox_conn);
-
+        mBTFetchSuccess = false;
         mProgress = new ProgressDialog(this, R.style.NewDialog);
 
         mProgress.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {
-                Log.e("BR", "ProgressBar cancelling");
-                mBTTask.cancel(true);
-                if (mSocket != null && mSocket.isConnected()) {
-                    try {
-                        Log.e("BR", "Bluetooth disconnect");
-                        mSocket.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+                Log.d("BR", "ProgressBar cancelling");
                 if (!mBTFetchSuccess) {
                     finish();
                     return;
@@ -84,17 +75,35 @@ public class PulseOxConnActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d("BR", "PulseOx Activity destroy");
+        if (mBTTask != null) {
+            mBTTask.cancel(true);
+        }
+        if (mSocket != null && mSocket.isConnected()) {
+            try {
+                Log.d("BR", "Bluetooth disconnect");
+                mSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
 
-        TextView tv = (TextView) findViewById(R.id.tv_pulse_ox);
-        tv.setText("");
-        mBTFetchSuccess = false;
+        if (!mBTFetchSuccess) {
+            TextView tv = (TextView) findViewById(R.id.tv_pulse_ox);
+            tv.setText("");
 
-        mProgress.setMessage("Bluetooth connecting...");
-        mProgress.show();
-        mBTTask = new BlueToothTask();
-        mBTTask.execute();
+            mProgress.setMessage("Bluetooth connecting...");
+            mProgress.show();
+            mBTTask = new BlueToothTask();
+            mBTTask.execute();
+        }
     }
 
     @Override
@@ -143,8 +152,6 @@ public class PulseOxConnActivity extends AppCompatActivity {
                 UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); //Standard SerialPortService ID
                 try {
                     mSocket = mDevice.createRfcommSocketToServiceRecord(uuid);
-                    if (mSocket == null) continue;
-
                     mSocket.connect();
                     mOutputStream = mSocket.getOutputStream();
                     mInputStream = mSocket.getInputStream();
@@ -177,7 +184,7 @@ public class PulseOxConnActivity extends AppCompatActivity {
             int buffOffset = 0;
             while(!Thread.currentThread().isInterrupted() && !isStopWorker) {
                 if (!mSocket.isConnected()) {
-                    Log.e("BR", "Bluetooth already disconnected");
+                    Log.e("BR", "Bluetooth already disconnected for background task");
                     break;
                 }
 
@@ -185,6 +192,7 @@ public class PulseOxConnActivity extends AppCompatActivity {
                     int bytesAvailable = mInputStream.available();
                     if (bytesAvailable > 0) {
                         int readSize = mInputStream.read(packetBytes, buffOffset, bytesAvailable);
+                        Log.d("BR", "Bluetooth input stream read : " + readSize + " " + mCommType.toString());
                         buffOffset += readSize;
                     }
 
@@ -249,7 +257,7 @@ public class PulseOxConnActivity extends AppCompatActivity {
                         case DataIn: {
                             if (bytesAvailable > 0) {
                                 Utils.ByteReadResult res = Utils.extractResponse(packetBytes, buffOffset);
-                                if (res.success) {
+                                if (res.success && res.result.length > 20) {
                                     byte[] dataInResult = res.result;
                                     packetBytes = Utils.copyByteArr(
                                             packetBytes, res.byteRead, buffOffset, 0);
