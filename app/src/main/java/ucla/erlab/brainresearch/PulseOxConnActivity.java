@@ -65,13 +65,31 @@ public class PulseOxConnActivity extends AppCompatActivity {
         mProgress.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {
-                Log.d("BR", "ProgressBar cancelling");
+                Log.d("BR", "ProgressBar cancel");
                 if (!mBTFetchSuccess) {
                     finish();
                     return;
                 }
             }
         });
+        mProgress.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                Log.d("BR", "ProgressBar dismiss");
+            }
+        });
+    }
+
+    public void closeBlueToothSocket() {
+        if (mSocket != null && mSocket.isConnected()) {
+            Log.d("BR", "Trying to close BlueToothSocket");
+            try {
+                mSocket.close();
+                mSocket = null;
+            } catch (IOException e) {
+                Log.w("BR", "BlueToothSocket close error");
+            }
+        }
     }
 
     @Override
@@ -81,14 +99,7 @@ public class PulseOxConnActivity extends AppCompatActivity {
         if (mBTTask != null) {
             mBTTask.cancel(true);
         }
-        if (mSocket != null && mSocket.isConnected()) {
-            try {
-                Log.d("BR", "Bluetooth disconnect");
-                mSocket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        closeBlueToothSocket();
     }
 
     @Override
@@ -157,9 +168,9 @@ public class PulseOxConnActivity extends AppCompatActivity {
                     mInputStream = mSocket.getInputStream();
                     isConnected = true;
                 } catch (IOException e) {
-                    Log.w("BR", "Bluetooth connection first failure");
+                    Log.w("BR", "1st trial failed for bluetooth connection");
                     try {
-                        Thread.sleep(500);
+                        Thread.sleep(300);
                         Class<?> clazz = mSocket.getRemoteDevice().getClass();
                         Class<?>[] paramTypes = new Class<?>[]{Integer.TYPE};
 
@@ -172,7 +183,7 @@ public class PulseOxConnActivity extends AppCompatActivity {
                         mInputStream = mSocket.getInputStream();
                         isConnected = true;
                     } catch (Exception ex) {
-                        Log.w("BR", "Bluetooth connection second failure");
+                        Log.w("BR", "2nd trial failed for bluetooth connection");
                     }
                 }
             }
