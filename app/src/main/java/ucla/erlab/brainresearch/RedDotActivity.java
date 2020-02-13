@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
@@ -71,7 +70,7 @@ public class RedDotActivity extends AppCompatActivity {
     public void onRedDot(View view) {
         Intent intent = new Intent(RedDotActivity.this, BloodPressureActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        intent.putExtra(Config.BP_TYPE, Config.BPType.PRE_STRESS_REDUCTION);
+        intent.putExtra(Config.BP_TYPE, Config.BPType.PreStressReduction);
         startActivity(intent);
     }
 

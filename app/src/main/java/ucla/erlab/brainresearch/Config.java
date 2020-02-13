@@ -4,6 +4,7 @@ public class Config {
     public static final String REST_TYPE = "rest_type";
     public static final String BP_TYPE = "bp_type";
 
+    public static final String EXIT_KEY = "exit";
 
     public enum RestType {
         Setup,
@@ -17,6 +18,7 @@ public class Config {
         Setup,
         Rest,
         Valsalva,
-        PRE_STRESS_REDUCTION
+        PreStressReduction,
+        PostStressReduction
     }
 }

@@ -29,26 +29,29 @@ public class BloodPressureActivity extends AppCompatActivity {
     }
 
     public void onBtnNext(View view) {
+        Intent intent = null;
         switch (mBPScreenType) {
-            case Setup: {
-                Intent intent = new Intent(BloodPressureActivity.this, QuestionActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-            }
+            case Setup:
+                intent = new Intent(BloodPressureActivity.this, QuestionActivity.class);
                 break;
-            case Rest: {
-                Intent intent = new Intent(BloodPressureActivity.this, IntroValsalvaActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-            }
+            case Rest:
+                intent = new Intent(BloodPressureActivity.this, IntroValsalvaActivity.class);
                 break;
-            case Valsalva: {
-                Intent intent = new Intent(BloodPressureActivity.this, IntroBreathHoldActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-            }
+            case Valsalva:
+                intent = new Intent(BloodPressureActivity.this, IntroBreathHoldActivity.class);
+                break;
+            case PreStressReduction:
+                intent = new Intent(BloodPressureActivity.this, StressReductionActivity.class);
+                break;
+            case PostStressReduction:
+                intent = new Intent(BloodPressureActivity.this, FinishActivity.class);
+                break;
             default:
                 break;
+        }
+        if (intent != null) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
         }
     }
 }

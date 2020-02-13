@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ucla.erlab.brainresearch">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,9 +14,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".FinishActivity"
+            android:label="@string/title_activity_finish"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".StressReductionActivity"
+            android:label="@string/title_activity_stress_reduction"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".IntroStressReductionActivity"
+            android:label="@string/title_activity_intro_stress_reduction"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".RedDotActivity"
             android:label="@string/title_activity_red_dot"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".IntroPVTActivity"
             android:label="@string/title_activity_intro_pvt"
@@ -64,7 +80,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
 </manifest>

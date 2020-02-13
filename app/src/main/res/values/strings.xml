@@ -37,6 +37,12 @@
         \n
         \u2022 When you see a red dot, tap the screen\n
     </string>
+    <string name="intro_stress_reduction">
+        Ready for Breathing Awareness\n
+        \n
+        \u2022 Select audio option\n
+    </string>
+
     <string name="pulseox_connection">
     Checking pulseox connection…\n
     \n
@@ -96,6 +102,9 @@
     <string name="rest_wait">
         Wait....
     </string>
+    <string name="finish_header">
+        You’ve finished today’s study.
+    </string>
 
     <string name="title_activity_pulse_ox_conn">PulseOxConnActivity</string>
     <string name="title_activity_blood_pressure">BloodPressureActivity</string>
@@ -107,4 +116,7 @@
     <string name="title_activity_breath_hold_blow">BreathHoldBlowActivity</string>
     <string name="title_activity_intro_pvt">IntroPVTActivity</string>
     <string name="title_activity_red_dot">RedDotActivity</string>
+    <string name="title_activity_intro_stress_reduction">IntroStressReduction</string>
+    <string name="title_activity_stress_reduction">StressReductionActivity</string>
+    <string name="title_activity_finish">FinishActivity</string>
 </resources>
