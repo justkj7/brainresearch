@@ -23,6 +23,13 @@
         \u2022 When screen changes back, breathe normally and take tube out of mouth\n
         \u2022 Wait till end of second rest period\n
     </string>
+    <string name="intro_stroop">
+        Ready for Stroop\n
+        \n
+        \u2022 Names of colors will appear on the screen.\n
+        \u2022 Choose the color the words are written in.\n
+        \u2022 Click the button below when you’re ready.\n
+    </string>
     <string name="intro_breath_hold">
         Ready for Breath-hold\n
         \n
@@ -119,4 +126,6 @@
     <string name="title_activity_intro_stress_reduction">IntroStressReduction</string>
     <string name="title_activity_stress_reduction">StressReductionActivity</string>
     <string name="title_activity_finish">FinishActivity</string>
+    <string name="title_activity_intro_stroop">IntroStroopActivity</string>
+    <string name="title_activity_stroop">StroopActivity</string>
 </resources>

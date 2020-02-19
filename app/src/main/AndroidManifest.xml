@@ -14,9 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".StroopActivity"
+            android:label="@string/title_activity_stroop"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".IntroStroopActivity"
+            android:label="@string/title_activity_intro_stroop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".FinishActivity"
             android:label="@string/title_activity_finish"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".StressReductionActivity"
             android:label="@string/title_activity_stress_reduction"

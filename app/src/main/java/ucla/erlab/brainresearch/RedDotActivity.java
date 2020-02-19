@@ -68,9 +68,8 @@ public class RedDotActivity extends AppCompatActivity {
     }
 
     public void onRedDot(View view) {
-        Intent intent = new Intent(RedDotActivity.this, BloodPressureActivity.class);
+        Intent intent = new Intent(RedDotActivity.this, IntroStroopActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        intent.putExtra(Config.BP_TYPE, Config.BPType.PreStressReduction);
         startActivity(intent);
     }
 

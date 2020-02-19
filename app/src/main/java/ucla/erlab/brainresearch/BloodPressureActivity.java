@@ -41,7 +41,7 @@ public class BloodPressureActivity extends AppCompatActivity {
                 intent = new Intent(BloodPressureActivity.this, IntroBreathHoldActivity.class);
                 break;
             case PreStressReduction:
-                intent = new Intent(BloodPressureActivity.this, StressReductionActivity.class);
+                intent = new Intent(BloodPressureActivity.this, IntroStressReductionActivity.class);
                 break;
             case PostStressReduction:
                 intent = new Intent(BloodPressureActivity.this, FinishActivity.class);
