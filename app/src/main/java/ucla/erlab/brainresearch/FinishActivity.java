@@ -10,13 +10,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.TextView;
 
 public class FinishActivity extends AppCompatActivity {
+    Utils.SettingData data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finish);
+
+        data = Utils.getSettingData(this);
+        data.daycount++;
+        TextView tv_finish_day = (TextView) findViewById(R.id.tv_finish_day);
+        tv_finish_day.setText("" + data.daycount);
     }
 
     @Override
@@ -26,6 +33,7 @@ public class FinishActivity extends AppCompatActivity {
     }
 
     public void onBtnFinish(View view) {
+        Utils.setSettingData(this, data);
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(Config.EXIT_KEY, true);
