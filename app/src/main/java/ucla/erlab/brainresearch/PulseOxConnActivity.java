@@ -67,7 +67,10 @@ public class PulseOxConnActivity extends AppCompatActivity {
             public void onCancel(DialogInterface dialog) {
                 Log.d("BR", "ProgressBar cancel");
                 if (!mBTFetchSuccess) {
-                    finish();
+                    if (mBTTask != null) {
+                        mBTTask.cancel(true);
+                    }
+                    //finish();
                     return;
                 }
             }
@@ -143,7 +146,7 @@ public class PulseOxConnActivity extends AppCompatActivity {
 
         private void connectBlueTooth() {
             boolean isConnected = false;
-            while (!Thread.currentThread().isInterrupted() && !isConnected) {
+            while (!Thread.currentThread().isInterrupted() && !isCancelled() && !isConnected) {
                 mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
                 if (!mBluetoothAdapter.isEnabled()) {
                     Intent enableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -193,7 +196,7 @@ public class PulseOxConnActivity extends AppCompatActivity {
             boolean isStopWorker = false;
             byte[] packetBytes = new byte[BUF_SIZE];
             int buffOffset = 0;
-            while(!Thread.currentThread().isInterrupted() && !isStopWorker) {
+            while(!Thread.currentThread().isInterrupted()&& !isCancelled() && !isStopWorker) {
                 if (!mSocket.isConnected()) {
                     Log.e("BR", "Bluetooth already disconnected for background task");
                     break;
