@@ -19,7 +19,7 @@ public class IntroPVTActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro_pvt);
 
         Utils.SettingData data = Utils.getSettingData(this);
-        if (data.daycount % 6 != 3) {
+        if (!data.testingmode && data.daycount % 6 != 3) {
             // every 6 days with offset 2 (day 3, 9, 15...)
             Intent intent = new Intent(IntroPVTActivity.this, IntroStroopActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

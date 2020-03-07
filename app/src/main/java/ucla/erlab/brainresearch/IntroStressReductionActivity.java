@@ -16,8 +16,9 @@ public class IntroStressReductionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro_stress_reduction);
 
         Utils.SettingData data = Utils.getSettingData(this);
-        if (!"SR".equals(getResources().getStringArray(R.array.protocol_entries)[data.protocol])
-                || data.daycount < 15) {
+        if (!data.testingmode &&
+                (!"SR".equals(getResources().getStringArray(R.array.protocol_entries)[data.protocol])
+                || data.daycount < 15)) {
             Intent intent = new Intent(IntroStressReductionActivity.this, FinishActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
