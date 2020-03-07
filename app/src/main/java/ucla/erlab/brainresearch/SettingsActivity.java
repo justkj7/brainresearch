@@ -115,7 +115,7 @@ public class SettingsActivity extends AppCompatActivity {
             etGroup.setText("");
 
             EditText etDayCount = (EditText) findViewById(R.id.setting_day_count);
-            etDayCount.setText("0");
+            etDayCount.setText("1");
 
             RadioGroup rgTestingMode = (RadioGroup) findViewById(R.id.setting_testing_mode);
             rgTestingMode.check(R.id.setting_testing_mode_no);

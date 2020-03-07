@@ -123,7 +123,7 @@ public class Utils {
         result.menstruating = pref.getBoolean(Config.PREF_SETTING_MENSTRUATING, false);
         result.protocol = pref.getInt(Config.PREF_SETTING_PROTOCOL, 0);
         result.group = pref.getString(Config.PREF_SETTING_GROUP, "");
-        result.daycount = pref.getInt(Config.PREF_SETTING_DAY_COUNT, 0);
+        result.daycount = pref.getInt(Config.PREF_SETTING_DAY_COUNT, 1);
         result.testingmode = pref.getBoolean(Config.PREF_SETTING_TESTING_MODE, false);
 
         return result;

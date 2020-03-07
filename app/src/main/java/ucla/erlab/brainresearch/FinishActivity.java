@@ -21,7 +21,6 @@ public class FinishActivity extends AppCompatActivity {
         setContentView(R.layout.activity_finish);
 
         data = Utils.getSettingData(this);
-        data.daycount++;
         TextView tv_finish_day = (TextView) findViewById(R.id.tv_finish_day);
         tv_finish_day.setText("" + data.daycount);
     }
@@ -33,6 +32,7 @@ public class FinishActivity extends AppCompatActivity {
     }
 
     public void onBtnFinish(View view) {
+        data.daycount++;
         Utils.setSettingData(this, data);
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
