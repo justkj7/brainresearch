@@ -24,9 +24,10 @@
                 android:textSize="15sp"
                 android:text="Subject ID" />
             <EditText
-                android:id="@+id/subject_id"
+                android:id="@+id/setting_subject_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:text="" />
         </LinearLayout>
 
@@ -40,18 +41,18 @@
                 android:textSize="15sp"
                 android:text="Sex" />
             <RadioGroup
+                android:id="@+id/setting_sex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <RadioButton
-                    android:id="@+id/sex_male"
+                    android:id="@+id/setting_sex_male"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Male"
                     android:textSize="15sp"/>
-
                 <RadioButton
-                    android:id="@+id/sex_female"
+                    android:id="@+id/setting_sex_famale"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Female"
@@ -69,18 +70,19 @@
                 android:textSize="15sp"
                 android:text="Menstruating (For female)" />
             <RadioGroup
+                android:id="@+id/setting_menstruating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <RadioButton
-                    android:id="@+id/menstruating_yes"
+                    android:id="@+id/setting_menstruating_yes"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Yes"
                     android:textSize="15sp"/>
 
                 <RadioButton
-                    android:id="@+id/menstruating_no"
+                    android:id="@+id/setting_menstruating_no"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="No"
@@ -97,7 +99,7 @@
                 android:textSize="15sp"
                 android:text="Protocol" />
             <Spinner
-                android:id="@+id/spinner1"
+                android:id="@+id/setting_protocol"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:entries="@array/protocol_entries"
@@ -113,6 +115,7 @@
                 android:textSize="15sp"
                 android:text="Group" />
             <EditText
+                android:id="@+id/setting_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="" />
@@ -127,10 +130,11 @@
                 android:textSize="15sp"
                 android:text="Day count" />
             <EditText
+                android:id="@+id/setting_day_count"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:text="0" />
+                android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -142,17 +146,18 @@
                 android:textSize="15sp"
                 android:text="Testing mode" />
             <RadioGroup
+                android:id="@+id/setting_testing_mode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <RadioButton
-                    android:id="@+id/testing_mode_yes"
+                    android:id="@+id/setting_testing_mode_yes"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Yes"
                     android:textSize="15sp"/>
                 <RadioButton
-                    android:id="@+id/testing_mode_no"
+                    android:id="@+id/setting_testing_mode_no"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="No"

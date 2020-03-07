@@ -1,5 +1,7 @@
 package ucla.erlab.brainresearch;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 public class Utils {
@@ -100,5 +102,45 @@ public class Utils {
         result.pulse = pulse;
         result.spo2 = spo2;
         return result;
+    }
+
+
+    public static class SettingData {
+        public int subjectId;
+        public int sex; // 0 : male, 1 : female
+        public boolean menstruating;
+        public int protocol; // aligned with spinner array
+        public String group;
+        public int daycount;
+        public boolean testingmode;
+    }
+
+    public static SettingData getSettingData(Context ctx) {
+        SharedPreferences pref = ctx.getSharedPreferences(Config.PREF_SETTING, 0); // 0 - for private mode
+        SettingData result = new SettingData();
+        result.subjectId = pref.getInt(Config.PREF_SETTING_SUBJECT_ID, 0);
+        result.sex = pref.getInt(Config.PREF_SETTING_SEX, 0);
+        result.menstruating = pref.getBoolean(Config.PREF_SETTING_MENSTRUATING, false);
+        result.protocol = pref.getInt(Config.PREF_SETTING_PROTOCOL, 0);
+        result.group = pref.getString(Config.PREF_SETTING_GROUP, "");
+        result.daycount = pref.getInt(Config.PREF_SETTING_DAY_COUNT, 0);
+        result.testingmode = pref.getBoolean(Config.PREF_SETTING_TESTING_MODE, false);
+
+        return result;
+    }
+
+    public static void setSettingData(Context ctx, SettingData data) {
+        SharedPreferences pref = ctx.getSharedPreferences(Config.PREF_SETTING, 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
+
+        editor.putInt(Config.PREF_SETTING_SUBJECT_ID, data.subjectId);
+        editor.putInt(Config.PREF_SETTING_SEX, data.sex);
+        editor.putBoolean(Config.PREF_SETTING_MENSTRUATING, data.menstruating);
+        editor.putInt(Config.PREF_SETTING_PROTOCOL, data.protocol);
+        editor.putString(Config.PREF_SETTING_GROUP, data.group);
+        editor.putInt(Config.PREF_SETTING_DAY_COUNT, data.daycount);
+        editor.putBoolean(Config.PREF_SETTING_TESTING_MODE, data.testingmode);
+
+        editor.apply();
     }
 }
