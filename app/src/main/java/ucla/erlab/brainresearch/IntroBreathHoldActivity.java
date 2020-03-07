@@ -17,6 +17,15 @@ public class IntroBreathHoldActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro_breath_hold);
+
+        Utils.SettingData data = Utils.getSettingData(this);
+        if (data.daycount % 6 != 1) {
+            // every 6 days with offset 0 (day 1, 7, 13...)
+            Intent intent = new Intent(IntroBreathHoldActivity.this, IntroPVTActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override
