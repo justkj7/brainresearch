@@ -2,8 +2,11 @@ package ucla.erlab.brainresearch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -83,6 +86,41 @@ public class SettingsActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         overridePendingTransition(0, 0);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.manu_setting, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_set_default) {
+            EditText etSubjectId = (EditText) findViewById(R.id.setting_subject_id);
+            etSubjectId.setText("0");
+
+            RadioGroup rgSex = (RadioGroup) findViewById(R.id.setting_sex);
+            rgSex.check(R.id.setting_sex_male);
+
+            RadioGroup rgMenstruating = (RadioGroup) findViewById(R.id.setting_menstruating);
+            rgMenstruating.check(R.id.setting_menstruating_no);
+
+            Spinner sProtocol = (Spinner) findViewById(R.id.setting_protocol);
+            sProtocol.setSelection(0);
+
+            EditText etGroup = (EditText) findViewById(R.id.setting_group);
+            etGroup.setText("");
+
+            EditText etDayCount = (EditText) findViewById(R.id.setting_day_count);
+            etDayCount.setText("0");
+
+            RadioGroup rgTestingMode = (RadioGroup) findViewById(R.id.setting_testing_mode);
+            rgTestingMode.check(R.id.setting_testing_mode_no);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void onBtnCancel(View view) {

@@ -118,6 +118,8 @@
         <item>SR</item>
         <item>IMT</item>
     </string-array>
+    <string name="set_default">Set Default</string>
+
 
     <string name="title_activity_pulse_ox_conn">PulseOxConnActivity</string>
     <string name="title_activity_blood_pressure">BloodPressureActivity</string>

@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ucla.erlab.brainresearch.SettingsActivity">
+    <item
+        android:id="@+id/action_set_default"
+        android:orderInCategory="100"
+        android:title="@string/set_default"
+        app:showAsAction="never" />
+</menu>
